@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DjangoController;
+use App\Http\Controllers\ExpressController;
+use App\Http\Controllers\FlaskController;
 
 use Illuminate\Support\Facades\Http;
 
@@ -14,6 +17,13 @@ Route::get("/users",[UserController::class, "index"]);
 Route::post("/users",[UserController::class, "store"]);
 Route::put("/users/{id}",[UserController::class, "update"]);
 Route::delete("/users/{id}",[UserController::class, "destroy"]);
+Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('/recuperar', [UserController::class, 'recuperarPassword']);
+
+/********** Rutas para el controlador de Django **********/
+Route::get("/recetas",[DjangoController::class, "traer_recetas"]);
+
 
 
 Route::get("/ingredients",[IngredientController::class, "index"]);
