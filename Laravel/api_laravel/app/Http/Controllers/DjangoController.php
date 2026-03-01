@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Http;
 
 class DjangoController extends Controller
 {
+
     public function traer_recetas()
     {
-        $response = Http::get('http://localhost:8000/api/recipes/')
-            ->json();
+        $response = Http::get("DJANGO_SERVICE_URL/api/recipes/")->json();
         return response()->json($response);
     }
 
     public function guardar_receta(Request $request)
     {
-        $response = Http::post('http://localhost:8000/api/recipes/', [
+        $response = Http::post("DJANGO_SERVICE_URL/api/recipes/", [
             'name' => $request->name,
             'description' => $request->description,
             'ingredients' => $request->ingredients,
