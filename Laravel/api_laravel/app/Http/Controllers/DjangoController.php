@@ -8,20 +8,23 @@ use Illuminate\Support\Facades\Http;
 class DjangoController extends Controller
 {
 
-    public function traer_recetas()
-    {
-        $response = Http::get("DJANGO_SERVICE_URL/api/recipes/")->json();
-        return response()->json($response);
-    }
 
     public function guardar_receta(Request $request)
     {
-        $response = Http::post("DJANGO_SERVICE_URL/api/recipes/", [
-            'name' => $request->name,
-            'description' => $request->description,
-            'ingredients' => $request->ingredients,
-        ])->json();
+        $response = Http::withHeaders([
+            'Authorization' => 'Token miclave123',
+        ])->post(config('services.django.url') . '/api/productos/', [
+            'nombre' => $request->nombre,
+            'precio' => $request->precio,
+            'descripcion' => $request->descripcion
+            
+        ]);
+        return [
+            'status' => $response->status(),
+            'data' => $response->json(),
+        ];
 
-        return response()->json($response);
+        
     }
+    
 }

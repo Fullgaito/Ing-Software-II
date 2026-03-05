@@ -11,6 +11,8 @@ use App\Http\Controllers\FlaskController;
 
 use Illuminate\Support\Facades\Http;
 
+/********** Rutas para el controlador de Django **********/
+Route::post("/productos",[DjangoController::class, "guardar_receta"]);
 
 /********** Rutas para el controlador de usuarios **********/
 Route::get("/users",[UserController::class, "index"]);
@@ -21,8 +23,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 Route::post('/recuperar', [UserController::class, 'recuperarPassword']);
 
-/********** Rutas para el controlador de Django **********/
-Route::get("/recetas",[DjangoController::class, "traer_recetas"]);
+
 
 
 
