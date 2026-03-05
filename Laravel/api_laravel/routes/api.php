@@ -18,6 +18,7 @@ Route::post("/productos",[DjangoController::class, "guardar_receta"]);
 Route::post("/usuarios",[ExpressController::class, "usuarios_firebase"]);
 
 /********** Rutas para el controlador de Flask **********/
+Route::post("/usuarios_flask",[FlaskController::class, "usuarios_Flask"]);
 Route::post("/posts",[FlaskController::class, "post_Flask"]);
 
 /********** Rutas para el controlador de usuarios **********/
