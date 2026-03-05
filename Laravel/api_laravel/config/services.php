@@ -35,4 +35,8 @@ return [
         'url' => env('DJANGO_SERVICE_URL'),
     ],
 
+    'express' => [
+        'url' => env('EXPRESS_SERVICE_URL'),
+    ],
+
 ];

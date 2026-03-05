@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Http;
 /********** Rutas para el controlador de Django **********/
 Route::post("/productos",[DjangoController::class, "guardar_receta"]);
 
+/********** Rutas para el controlador de Express **********/
+Route::post("/usuarios",[ExpressController::class, "usuarios_firebase"]);
+
 /********** Rutas para el controlador de usuarios **********/
 Route::get("/users",[UserController::class, "index"]);
 Route::post("/users",[UserController::class, "store"]);
