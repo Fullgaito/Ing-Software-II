@@ -15,7 +15,7 @@ class SimpleCrudUser(HttpUser): #definimos una clase que hereda de HttpUser, que
         data={
             "name": "Ingrediente Actualizado PUT",
         }
-        self.client.put("/ingredients/1", json=data)
+        self.client.put("/ingredients", json=data)
     @task
     def delete_product(self):
-        self.client.delete("/ingredients/1")
+        self.client.delete("/ingredients")
