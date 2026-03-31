@@ -8,8 +8,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DjangoController;
 use App\Http\Controllers\ExpressController;
 use App\Http\Controllers\FlaskController;
+use App\Http\Controllers\ProductController;
 
 use Illuminate\Support\Facades\Http;
+
+Route::post("/products",[ProductController::class, "store"]);
 
 /********** Rutas para el controlador de Django **********/
 Route::post("/productos",[DjangoController::class, "guardar_receta"]);
