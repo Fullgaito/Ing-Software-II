@@ -11,6 +11,9 @@ use App\Http\Controllers\FlaskController;
 use App\Http\Controllers\ProductController;
 
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\BookController;
+
+Route::apiResource('books', BookController::class);
 
 Route::post("/products",[ProductController::class, "store"]);
 
