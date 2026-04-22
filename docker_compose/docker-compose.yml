@@ -1,0 +1,12 @@
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+  db:
+    build:
+      context: .
+    volumes:
+      - db_data:/var/lib/postgresql/data
+volumes:
+  db_data:
