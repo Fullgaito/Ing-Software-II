@@ -8,5 +8,16 @@ services:
       context: .
     volumes:
       - db_data:/var/lib/postgresql/data
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8080:80"
+    mem_limit: 256m
+    cpus: 0.25
 volumes:
   db_data:

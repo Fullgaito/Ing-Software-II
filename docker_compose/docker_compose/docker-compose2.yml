@@ -1,0 +1,30 @@
+services:
+  php:
+    image: php:8.2.30-zts-trixie
+    mem_limit: 512m
+    cpus: 0.5
+
+  mysql:
+    image: mysql:8.0.45-debian
+    ports:
+      - "8080:3306"
+    mem_limit: 1024m
+    cpus: 1
+  db:
+    build:
+      context: .
+    volumes:
+      - db_data:/var/lib/mysql/data
+  phpmyadmin:
+    image: phpmyadmin:fpm-alpine
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8080:80"
+    mem_limit: 1256m
+    cpus: 0.25
+volumes:
+  db_data:
